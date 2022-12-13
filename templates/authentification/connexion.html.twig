@@ -1,0 +1,8 @@
+{% form_theme formulaire 'form_table_layout.html.twig' %}
+<h3>Espace employé - Connexion</h3>
+<center>
+    {{form(formulaire)}}
+    {% if message is defined %}
+        {{message}}
+    {% endif %}  
+</center>

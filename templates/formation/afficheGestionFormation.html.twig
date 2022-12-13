@@ -1,0 +1,22 @@
+<a href="{{path('app_espace_employe')}}">Retour</a>
+
+<h3>Gestion des formations</h3>
+
+<center>
+    <a href="{{path('app_ajout_formation')}}">Ajouter une formation</a>
+</center>
+
+<h3>Liste des formations :</h3>
+{% if lesFormations is defined %}
+    {% for uneFormation in lesFormations %}
+        <b>Date de début : </b>{{uneFormation.dateDebut|date("d/m/Y")}}<br>
+        <b>Nombre d'heures : </b>{{uneFormation.nombreHeures}}<br>
+        <b>Département : </b>{{uneFormation.departement}}<br>
+        <b>Libellé : </b>{{uneFormation.libelle.libelle}}<br>
+        <b>Description : </b>{{uneFormation.description}}<br>
+        <a href="{{path("app_suppression_formation", {"id": uneFormation.id})}}">Supprimer</a>
+        <a href="{{path("app_modification_formation", {"id": uneFormation.id})}}">Modifier</a><br><br>
+    {% endfor %}
+{% else %}
+    <p>Aucune formation n'est enregistrée !</p>
+{% endif %}
