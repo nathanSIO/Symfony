@@ -1,0 +1,19 @@
+{% include 'base.html.twig' %}
+<a href="{{path('app_espace_employe')}}">Retour</a><br>
+
+<h3>Gestion des employés</h3>
+
+
+
+<h3>Liste des employés :</h3>
+{% if lesEmployes is defined %}
+    {% for employe in lesEmployes %}
+    <b> Nom :</b>  {{employe.nom}}<br>
+    <b> Prénom :</b>  {{employe.prenom }}<br/>
+    <b> Statut: </b> {{employe.statut}}<br/>
+    <b>Password :</b>{{employe.password}}<br/>
+    <a href="{{path('app_suppression_employe', {'id': employe.id})}}">Suppression</a><br><br>
+    {% endfor %}
+{% else %}
+    <p>Aucun employés n'est enregistré !</p><br></br>
+{% endif %}

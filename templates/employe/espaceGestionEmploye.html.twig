@@ -1,0 +1,14 @@
+{% include 'base.html.twig' %}
+<center>
+<p>Connecté en tant que, {{unEmploye.login}}</p>
+
+<h3>Espace de gestion</h3>
+
+
+    <button href="{{path('app_affiche_gestion_formation')}}" type="button" class="btn btn-primary active" aria-current="page">Afficher/Gérer les formations</button><br><br>
+    <button href="{{path('app_affiche_employe')}}"class="btn btn-primary">Afficher/Gérer les employés</button><br><br>
+    <button href="{{path('app_affiche_gestion_inscription')}}"class="btn btn-primary">Afficher/Gérer les inscriptions aux formations</button><br><br>
+    <button href="{{path('app_affiche_employe_statut0')}}"class="btn btn-primary">Afficher/Gérer les employés de statut 0</button><br><br>
+
+<a align="right" href="{{path("app_deconnexion")}}">Déconnexion</a>
+</center>

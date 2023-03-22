@@ -1,0 +1,22 @@
+{% include 'base.html.twig' %}
+<a href="{{path('app_affiche_gestion_inscription')}}">Retour</a>
+
+<h3>Gestion des inscriptions :</h3>
+
+{% if lesInscriptions is defined %}
+    <h3>Liste des inscriptions en attente :</h3>
+    {% for uneInscription in lesInscriptions %}
+        {% if uneInscription.statut == "En attente" %}
+        <b>Noms de l'employé : </b>{{uneInscription.employe.nom}} {{uneInscription.employe.prenom}}<br>
+        <b>Département : </b>{{uneInscription.formation.departement}}<br>
+        <b>Nom de la formation : </b>{{uneInscription.formation.libelle.libelle}}<br>
+        <b>Date de début : </b>{{uneInscription.formation.dateDebut|date("d/m/Y")}}<br>
+        <b>Statut : </b>{{uneInscription.statut}}<br>
+        <a href="{{path('app_modification_inscription', {'id': uneInscription.id, 'statut': 'Acceptée'})}}">Accepter</a>
+        <a href="{{path('app_modification_inscription', {'id': uneInscription.id, 'statut': 'Refusée'})}}">Refuser</a><br><br>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p>Aucune inscriptions en attente !</p>
+{% endif %}
+    

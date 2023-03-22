@@ -1,0 +1,15 @@
+{% include 'base.html.twig' %}
+<a href="{{path('app_espace_employe')}}">Retour</a>
+
+<h3>Gestion des inscriptions formations  :</h3>
+
+{% if lesInscriptions is defined %}
+    <h3>Liste des formations :</h3>
+    {% for uneInscription in lesInscriptions %}
+        {# <b>Nom de la formation: </b>{{uneInscription.formation.libelle}}<br> #}
+        <b>Statut: </b>{{uneInscription.statut}}<br>
+        <b>Description de la formation : </b>{{uneInscription.formation.description}}<br><br>
+    {% endfor %}
+{% else %}
+    <p>Aucune inscriptions en attente !</p>
+{% endif %}
