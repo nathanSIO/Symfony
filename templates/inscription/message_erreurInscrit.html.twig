@@ -1,0 +1,11 @@
+{% include 'base.html.twig' %}
+{# {% block body %} #}
+<center>
+<div>
+    {% if (message) %}
+    {{ message }}
+    {% endif %}<br><br>
+    <a href="{{path("app_affiche_formation")}}" class="btn btn-danger">Revenir en arrière</a><br><br>
+</div>
+<center>
+{# {% endblock %} #}

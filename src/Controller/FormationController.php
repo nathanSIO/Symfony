@@ -76,5 +76,4 @@ class FormationController extends AbstractController
         return $this->redirectToRoute('app_affiche_formation');
     }
 
-    // <!-- #[Route('/suppressionFormation/{id}', name: 'app_inscription_formation')]{} -->
 }

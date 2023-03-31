@@ -18,7 +18,7 @@ class FormationType extends AbstractType
             ->add('dateDebut')
             ->add('nombreHeures')
             ->add('departement')
-            ->add('libelle', EntityType::class, array('class' => 'App\Entity\Produit', 'choice_label' => "libelle"))
+            ->add('Produit', EntityType::class, array('class' => 'App\Entity\Produit', 'choice_label' => "libelle"))
             ->add('description')
             ->add('save', SFType\SubmitType::class, array("label" => "Enregistrer"))
         ;

@@ -1,23 +1,67 @@
 {% include 'base.html.twig' %}
-<a href="{{path('app_espace_employe')}}">Retour</a>
+
+<center> <h3>Espace de gestion</h3> </center>
+
+{# <nav class="navbar bg-dark center" data-bs-theme="dark" >
+  <ul class="nav justify-content-center">
+    <li class="nav-item" >
+      <a class="nav-link active" aria-current="page" href="{{path('app_affiche_employe')}}">Afficher et gérer les formations </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_employe')}}">Afficher et gérer les employés</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_gestion_inscription')}}">Afficher et gérer les inscriptions aux formations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{{path('app_affiche_employe_statut0')}}">Voir les inscriptions d'un employé</a>
+    </li>
+  </ul>
+</nav>
+<br> #}
+
 
 <h3>Gestion des formations</h3>
 
 <center>
-    <a href="{{path('app_ajout_formation')}}">Ajouter une formation</a>
+    <a href="{{path('app_ajout_formation')}}" class="btn btn-success">Ajouter une formation</a>
 </center>
 
-<h3>Liste des formations :</h3>
+<br>
 {% if lesFormations is defined %}
-    {% for uneFormation in lesFormations %}
-        <b>Date de début : </b>{{uneFormation.dateDebut|date("d/m/Y")}}<br>
-        <b>Nombre d'heures : </b>{{uneFormation.nombreHeures}}<br>
-        <b>Département : </b>{{uneFormation.departement}}<br>
-        <b>Libellé : </b>{{uneFormation.libelle.libelle}}<br>
-        <b>Description : </b>{{uneFormation.description}}<br>
-        <a href="{{path("app_suppression_formation", {"id": uneFormation.id})}}">Supprimer</a>
-        <a href="{{path("app_modification_formation", {"id": uneFormation.id})}}">Modifier</a><br><br>
-    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date de début</th>
+                <th>Nombre d'heures</th>
+                <th>Département</th>
+                <th>Libellé</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for uneFormation in lesFormations %}
+                <tr>
+                    <td>{{uneFormation.dateDebut|date("d/m/Y")}}</td>
+                    <td>{{uneFormation.nombreHeures}}</td>
+                    <td>{{uneFormation.departement}}</td>
+                    <td>{{uneFormation.produit.libelle}}</td>
+                    <td>{{uneFormation.description}}</td>
+                    <td>
+                        <a href="{{path("app_modification_formation", {"id": uneFormation.id})}}" class="btn btn-warning">Modifier</a>
+                    </td>
+                    <td>
+                        <a href="{{path("app_suppression_formation", {"id": uneFormation.id})}}" class="btn btn-danger">Supprimer</a>
+                    </td>
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 {% else %}
     <p>Aucune formation n'est enregistrée !</p>
 {% endif %}
+
+<center><a href="{{path('app_espace_employe')}}" class="btn btn-outline-danger">Retour</a></center>
+
+    

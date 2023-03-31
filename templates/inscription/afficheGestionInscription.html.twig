@@ -1,21 +1,41 @@
 {% include 'base.html.twig' %}
-<a href="{{path('app_espace_employe')}}">Retour</a>
 
-<h3>Gestion des inscriptions :</h3>
+
+<h3>Liste des inscriptions en attente :</h3>
 
 <center>
-    <a href="{{path('app_affiche_gestion_inscription_enAttente')}}">Afficher/Gérer les inscriptions en attente</a>
+    <a href="{{path('app_affiche_gestion_inscription_enAttente')}}" class="btn btn-warning">Afficher/Gérer les inscriptions en attente</a>
 </center>
+<br>
 
 {% if lesInscriptions is defined %}
-    <h3>Liste des inscriptions :</h3>
-    {% for uneInscription in lesInscriptions %}
-        <b>Noms de l'employé : </b>{{uneInscription.employe.nom}} {{uneInscription.employe.prenom}}<br>
-        <b>Département : </b>{{uneInscription.formation.departement}}<br>
-        <b>Nom de la formation : </b>{{uneInscription.formation.libelle.libelle}}<br>
-        <b>Date de début : </b>{{uneInscription.formation.dateDebut|date("d/m/Y")}}<br>
-        <b>Statut : </b>{{uneInscription.statut}}<br><br>
-    {% endfor %}
+
+    <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom de l'employé</th>
+                    <th>Département </th>
+                    <th>Nom de la formation</th>
+                    <th>Date de début</th>
+                    <th>Statut</th>
+                    <th></th>
+                </tr>
+            </thead>
+            {% for uneInscription in lesInscriptions %}
+                <tbody>
+                        <tr>
+                            <td>{{uneInscription.employe.nom}} {{uneInscription.employe.prenom}}</td>
+                            <td>{{uneInscription.formation.departement}}</td>
+                            <td>{{uneInscription.formation.produit.libelle}}</td>
+                            <td>{{uneInscription.formation.dateDebut|date("d/m/Y")}}</td>
+                            <td>{{uneInscription.statut}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+        </table>
 {% else %}
     <p>Aucune inscriptions enregistrée !</p>
 {% endif %}
+
+<center><a href="{{path('app_espace_employe')}}" class="btn btn-outline-danger">Retour</a></center>
+       

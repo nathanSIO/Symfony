@@ -1,15 +1,28 @@
 {% include 'base.html.twig' %}
-<a href="{{path('app_espace_employe')}}">Retour</a>
 
-<h3>Gestion des inscriptions formations  :</h3>
+<h3>Liste des formations :</h3>
 
 {% if lesInscriptions is defined %}
-    <h3>Liste des formations :</h3>
-    {% for uneInscription in lesInscriptions %}
-        {# <b>Nom de la formation: </b>{{uneInscription.formation.libelle}}<br> #}
-        <b>Statut: </b>{{uneInscription.statut}}<br>
-        <b>Description de la formation : </b>{{uneInscription.formation.description}}<br><br>
-    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom de la formation</th>
+                <th>Description</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        {% for uneInscription in lesInscriptions %}
+            <tbody>
+                    <tr>
+                        <td>{{uneInscription.formation.produit.libelle}}</td>
+                        <td>{{uneInscription.formation.description}}</td>
+                        <td>{{uneInscription.statut}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+    </table>
 {% else %}
     <p>Aucune inscriptions en attente !</p>
 {% endif %}
+<br>
+<center><a href="{{path('app_affiche_employe_statut0')}}" class="btn btn-outline-danger">Retour</a></center>

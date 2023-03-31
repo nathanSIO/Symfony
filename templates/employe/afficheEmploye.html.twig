@@ -1,19 +1,52 @@
 {% include 'base.html.twig' %}
-<a href="{{path('app_espace_employe')}}">Retour</a><br>
 
-<h3>Gestion des employés</h3>
+<center> <h3>Espace de gestion</h3> </center>
 
-
+{# <nav class="navbar bg-dark center" data-bs-theme="dark" >
+  <ul class="nav justify-content-center">
+    <li class="nav-item" >
+      <a class="nav-link active" aria-current="page" href="{{path('app_affiche_employe')}}">Afficher et gérer les formations </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_employe')}}">Afficher et gérer les employés</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_gestion_inscription')}}">Afficher et gérer les inscriptions aux formations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{{path('app_affiche_employe_statut0')}}">Voir les inscriptions d'un employé</a>
+    </li>
+  </ul>
+</nav>
+<br> #}
 
 <h3>Liste des employés :</h3>
+<br>
 {% if lesEmployes is defined %}
-    {% for employe in lesEmployes %}
-    <b> Nom :</b>  {{employe.nom}}<br>
-    <b> Prénom :</b>  {{employe.prenom }}<br/>
-    <b> Statut: </b> {{employe.statut}}<br/>
-    <b>Password :</b>{{employe.password}}<br/>
-    <a href="{{path('app_suppression_employe', {'id': employe.id})}}">Suppression</a><br><br>
-    {% endfor %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Statut</th>
+                <th>Mot de passe</th>
+                <th></th>
+            </tr>
+        </thead>
+        {% for employe in lesEmployes %}
+            <tbody>
+                    <tr>
+                        <td>{{employe.nom}}</td>
+                        <td>{{employe.prenom }}</td>
+                        <td>{{employe.statut}}</td>
+                        <td>{{employe.password}}</td>
+                        <td><a href="{{path('app_suppression_employe', {'id': employe.id})}}">Suppression</a><br><br></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 {% else %}
     <p>Aucun employés n'est enregistré !</p><br></br>
 {% endif %}
+
+<center><a href="{{path('app_espace_employe')}}" class="btn btn-outline-danger">Retour</a><br></center>

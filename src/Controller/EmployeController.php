@@ -47,18 +47,11 @@ class EmployeController extends AbstractController
         $entityManager->flush();
         return $this->redirectToRoute('app_affiche_employe');
     }
-    // #[Route('rechercheEmploye', name: "app_recherche_employe")]
-    // public function rechercheEmploye(ManagerRegistry $doctrine): Response
-    // {
-    //     $lesEmployesRech = $doctrine->getManager()->getRepository(Employe::class)->find("nomEmploye");
-        
-    //     return $this->render("employe/rechercheEmploye.html.twig", array("lesEmployesRech" => $lesEmployesRech));
-    // }
 
     #[Route('/afficheEmploye/statut', name: 'app_affiche_employe_statut0')]
     public function afficheEmployeStatut0 (ManagerRegistry $doctrine)
     {
-        $lesEmployes = $doctrine->getManager()->getRepository(Employe::class)->findAll();
+        $lesEmployes = $doctrine->getManager()->getRepository(Employe::class)->findBy(["statut" => 0]);
 
         if (!empty($lesEmployes) || $lesEmployes ==null)
         {

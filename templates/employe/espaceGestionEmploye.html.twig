@@ -1,14 +1,27 @@
 {% include 'base.html.twig' %}
 <center>
-<p>Connecté en tant que, {{unEmploye.login}}</p>
+<p>Bienvenue, {{unEmploye.prenom}} {{unEmploye.nom}}</p>
 
 <h3>Espace de gestion</h3>
 
 
-    <button href="{{path('app_affiche_gestion_formation')}}" type="button" class="btn btn-primary active" aria-current="page">Afficher/Gérer les formations</button><br><br>
-    <button href="{{path('app_affiche_employe')}}"class="btn btn-primary">Afficher/Gérer les employés</button><br><br>
-    <button href="{{path('app_affiche_gestion_inscription')}}"class="btn btn-primary">Afficher/Gérer les inscriptions aux formations</button><br><br>
-    <button href="{{path('app_affiche_employe_statut0')}}"class="btn btn-primary">Afficher/Gérer les employés de statut 0</button><br><br>
-
-<a align="right" href="{{path("app_deconnexion")}}">Déconnexion</a>
+<nav class="navbar bg-dark center" data-bs-theme="dark" >
+  <ul class="nav justify-content-center">
+    <li class="nav-item" >
+      <a class="nav-link active" aria-current="page" href="{{path('app_affiche_gestion_formation')}}">Afficher et gérer les formations </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_employe')}}">Afficher et gérer les employés</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="{{path('app_affiche_gestion_inscription')}}">Afficher et gérer les inscriptions aux formations</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link active" href="{{path('app_affiche_employe_statut0')}}">Voir les inscriptions d'un employé</a>
+    </li>
+  </ul>
+</nav>
+<br>
+<center>
+      <a href="{{path("app_deconnexion")}}" class="btn btn-danger">Déconnexion</a>
 </center>

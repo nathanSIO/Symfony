@@ -2,6 +2,33 @@
 <b>Cherher un Employé : </b> <input type="text">
 
 {% if lesEmployesRech is defined %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Statut</th>
+                <th>Mot de passe</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for uneFormation in lesFormations %}
+                <tr>
+                    <td>{{employe.nom}}</td>
+                    <td>{{employe.prenom }}</td>
+                    <td>{{employe.statut}}</td>
+                    <td>{{employe.password}}</td>
+                    <a href="{{path("app_espace_employe", {"id": uneFormation.id})}}" class="btn btn-primary">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+
+{# 
     {% for employe in lesEmployesRech %}
     <b> Nom :</b>  {{employe.nom}}<br>
     <b> Prénom :</b>  {{employe.prenom }}<br/>
@@ -9,4 +36,4 @@
     <b>Password :</b>{{employe.password}}<br/>
     <a href="{{path('app_suppression_employe', {'id': employe.id})}}">Suppression</a><br><br>
     {% endfor %}
-{% endif %}
+{% endif %} #}

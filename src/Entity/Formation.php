@@ -29,11 +29,7 @@ class Formation
     #[ORM\ManyToOne(targetEntity:Produit::class)]
     #[ORM\JoinColumn(nullable:false)]
 
-    private $libelle;
-
-    
-
-
+    private $produit;
 
     public function getId(): ?int
     {
@@ -76,14 +72,14 @@ class Formation
         return $this;
     }
 
-    public function getLibelle(): ?Produit
+    public function getProduit(): ?Produit
     {
-        return $this->libelle;
+        return $this->produit;
     }
 
-    public function setLibelle(?Produit $libelle): self
+    public function setProduit(?Produit $produit): self
     {
-        $this->libelle = $libelle;
+        $this->produit = $produit;
 
         return $this;
     }

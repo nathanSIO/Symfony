@@ -1,11 +1,8 @@
 {% include 'base.html.twig' %}
 <center>
-{# <img src="IMG/logo2.jpg"
-     {# align="center" 
-     width="100"
-     height="100"> #}
 {% form_theme formulaire 'form_table_layout.html.twig' %}
 <h3>Espace employé - Connexion</h3>
+<br>
     {{form(formulaire)}}
     {% if message is defined %}
         {{message}}

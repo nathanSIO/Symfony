@@ -1,7 +1,15 @@
 {% include 'base.html.twig' %}
-<p>Connecté en tant que, {{unEmploye.login}}</p>
-<a href="{{path("app_deconnexion")}}">Déconnexion</a>
-<h3>Espace employé</h3>
 <center>
-    <a href="{{path("app_affiche_formation")}}">Afficher/S'inscrire aux formations</a><br>
+    <h3>Espace Employé</h3>
+    <p>Bienvenue {{unEmploye.prenom}} {{unEmploye.nom}} :</p>
+</center>
+<div class="parent">
+    <center>
+    <div class="div1"> <a href="{{path("app_affiche_formation")}}" class="btn btn-primary">Afficher/S'inscrire aux formations</a> </center><br>
+    <br><div class="div2" align="center"> <a href="{{path("app_deconnexion")}}" class="btn btn-danger" align="align-right">Déconnexion</a></div>
+</div>
+
+
+<center>
+   
 </center>

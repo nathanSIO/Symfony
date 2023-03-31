@@ -16,7 +16,8 @@ class ConnexionType extends AbstractType
         $builder
             ->add('login', SFType\TextType::class, array("label" => "Identifiant :"))
             ->add('password', SFType\PasswordType::class, array("label" => "Mot de passe :"))
-            ->add('connexion', SFType\SubmitType::class, array("label" => "Connexion"))
+            // ->add('connexion', SFType\SubmitType::class, array("label" => "Connexion"))
+            ->add('connexion', SFType\SubmitType::class, ["label" => "Connexion", "attr" => ["class" => "btn btn-outline-primary"]])
         ;
     }
 
