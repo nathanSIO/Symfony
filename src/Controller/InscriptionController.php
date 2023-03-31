@@ -96,29 +96,7 @@ class InscriptionController extends AbstractController
             return $this->render("inscription/afficheInscriptionEmploye.html.twig");
         }
     }
-
-    // #[Route('/inscription/add/{id}', name: 'app_inscription_add')]
-    // public function add(ManagerRegistry $doctrine, int $id): Response
-    // {
-    //     /** @var \App\Entity\Employe $employe */
-    //     $employe = $this->getUser();
-
-    //     $inscription = new Inscription;
-    //     $inscription->setEmploye($employe);
-    //     $inscription->setFormation($doctrine->getManager()->getRepository(Formation::class)->find($id));
-
-    //     $inscriptionExistante = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["Formation" => $id, "Employe" => $employe->getId()]);
-
-    //     if (!$inscriptionExistante) {
-    //         $inscription->setStatut("En attente");
-
-    //         $entityManager = $doctrine->getManager();
-    //         $entityManager->persist($inscription);
-    //         $entityManager->flush();
-    //     }
-
-    //     return $this->redirectToRoute("app_inscription_list");
-    // }
+ 
 
     #[Route("/erreurInscription", "app_erreur_inscrit")]
     public function erreur(ManagerRegistry $doctrine){
