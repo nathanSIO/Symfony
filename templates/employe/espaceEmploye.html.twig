@@ -3,13 +3,8 @@
     <h3>Espace Employé</h3>
     <p>Bienvenue {{unEmploye.prenom}} {{unEmploye.nom}} :</p>
 </center>
-<div class="parent">
-    <center>
-    <div class="div1"> <a href="{{path("app_affiche_formation")}}" class="btn btn-primary">Afficher/S'inscrire aux formations</a> </center><br>
-    <br><div class="div2" align="center"> <a href="{{path("app_deconnexion")}}" class="btn btn-danger" align="align-right">Déconnexion</a></div>
-</div>
-
-
 <center>
-   
+    <a href="{{path("app_affiche_formation")}}" class="btn btn-primary">Afficher/S'inscrire aux formations</a>
+    <a href="{{path("app_employe_inscription_list", {"id": unEmploye.id})}}" class="btn btn-primary">Afficher mes inscriptions</a><br><br>
+    <a href="{{path("app_deconnexion")}}" class="btn btn-danger" align="align-right">Déconnexion</a> 
 </center>

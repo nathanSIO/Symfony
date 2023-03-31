@@ -8,6 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use Doctrine\Persistence\ManagerRegistry;
 use App\Entity\Employe;
+use App\Entity\Inscription;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class EmployeController extends AbstractController
@@ -61,4 +62,13 @@ class EmployeController extends AbstractController
             return $this->render ('Employe/afficheEmployeStatut0.html.twig');
         }
     }
-}
+
+    #[Route("/employe/inscription/list/{id}", name: "app_employe_inscription_list")]
+    public function listInscription(ManagerRegistry $doctrine, int $id): Response
+    {
+        $employe = $doctrine->getManager()->getRepository(Employe::class)->find($id);
+        $inscriptions = $doctrine->getManager()->getRepository(Inscription::class)->findBy(["employe" => $id]);
+
+        return $this->render("employe/listEmployeIncription.html.twig", ["employe" => $employe, "inscriptions" => $inscriptions]);
+    }
+}  

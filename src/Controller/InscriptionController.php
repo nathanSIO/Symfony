@@ -41,7 +41,7 @@ class InscriptionController extends AbstractController
             return $this->redirectToRoute('app_erreur_inscrit');
         }
         
-        return $this->redirectToRoute("app_affiche_formation");
+        return $this->redirectToRoute("app_employe_inscription_list", ["id" => $unEmploye->getId()]);
     }
 
     #[Route('/afficheGestionInscription', name: 'app_affiche_gestion_inscription')]

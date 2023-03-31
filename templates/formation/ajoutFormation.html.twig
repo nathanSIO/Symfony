@@ -1,6 +1,11 @@
 {% include 'base.html.twig' %}
-<a href="{{path('app_affiche_formation')}}">Retour</a><br>
 
+<center>
 <h3>Ajouter une formation</h3>
+<br> 
 {% form_theme formulaire 'form_table_layout.html.twig' %}
 {{form(formulaire)}}
+
+<a href="{{path('app_affiche_gestion_formation')}}" class="btn btn-outline-danger">Retour</a><br>
+
+</center>

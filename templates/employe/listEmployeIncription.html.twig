@@ -1,0 +1,38 @@
+{% include "base.html.twig" %}
+
+{# {% block content %} #}
+    <h3>Liste des inscriptions de l'employé {{employe.nom}} {{employe.prenom}}</h3><br>
+    {% if inscriptions is empty %}
+        <div class="w-50 alert alert-danger">Aucune inscription enregistrée pour cet employé</div>
+    {% else %}
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Date de début</th>
+                    <th>Nombres d'heures</th>
+                    <th>Produit de la formation</th>
+                    <th>Département</th>
+                    <th>Description</th>
+                    <th>Statut</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for inscription in inscriptions %}
+                    <tr>
+                        <td>{{inscription.id}}</td>
+                        <td>{{inscription.formation.dateDebut|date("d/m/Y")}}</td>
+                        <td>{{inscription.formation.nombreHeures}}h</td>
+                        <td>{{inscription.formation.produit.libelle}}</td>
+                        <td>{{inscription.formation.departement}}</td>
+                        <td>{{inscription.formation.description}}</td>
+                        <td>{{inscription.statut}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{# {% endblock %} #}
+
+<center><a href="{{path('app_espace_employe')}}" class="btn btn-outline-danger">Retour</a><br></center>
